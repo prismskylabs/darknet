@@ -10,7 +10,7 @@ extern int gpu_index;
 
 #ifdef GPU
     #define BLOCK 512
-
+#ifndef __cplusplus
     #include "cuda_runtime.h"
     #include "curand.h"
     #include "cublas_v2.h"
@@ -18,6 +18,7 @@ extern int gpu_index;
     #ifdef CUDNN
     #include "cudnn.h"
     #endif
+#endif
 #endif
 
 #ifndef __cplusplus
