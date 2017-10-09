@@ -10,7 +10,6 @@ extern int gpu_index;
 
 #ifdef GPU
     #define BLOCK 512
-#ifndef __cplusplus
     #include "cuda_runtime.h"
     #include "curand.h"
     #include "cublas_v2.h"
@@ -18,7 +17,6 @@ extern int gpu_index;
     #ifdef CUDNN
     #include "cudnn.h"
     #endif
-#endif
 #endif
 
 #ifndef __cplusplus
@@ -31,6 +29,10 @@ extern int gpu_index;
     #include "opencv2/imgcodecs/imgcodecs_c.h"
     #endif
     #endif
+#endif
+
+#ifdef __cplusplus
+extern "C"{
 #endif
 
 typedef struct{
@@ -752,5 +754,9 @@ void normalize_array(float *a, int n);
 int *read_intlist(char *s, int *n, int d);
 size_t rand_size_t();
 float rand_normal();
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif
